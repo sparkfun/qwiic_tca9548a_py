@@ -45,7 +45,7 @@
 #
 # pylint: disable=line-too-long, bad-whitespace, invalid-name
 
-"""
+"""!
 qwiic_tca9548a
 =================
 Python module for the [Qwiic Mux Breakout](https://www.sparkfun.com/products/14685)
@@ -70,18 +70,18 @@ _DEFAULT_NAME = "Qwiic Mux"
 _AVAILABLE_I2C_ADDRESS = range(0x70,0x77 + 1)
 
 class QwiicTCA9548A(object):
-	"""
+	"""!
 	Initialise the TCA9548A chip at ``address`` with ``i2c_driver``.
-	:param address:		The I2C address to use for the device.
+
+	@param address: The I2C address to use for the device.
 						If not provided, the default address is
 						used.
-	:param i2c_driver:	An existing i2c driver object. If not
+	@param i2c_driver: An existing i2c driver object. If not
 						provided a driver object is created.
 
-	:return:			Constructor Initialization
+	@return **Bool** Constructor Initialization
 						True-	Successful
 						False-	Issue loading I2C driver
-	:rtype:				Bool
 	"""
 
 	#----------------------------------------------
@@ -99,20 +99,21 @@ class QwiicTCA9548A(object):
 	#----------------------------------------------
 	# Constructor
 	def __init__(self, address = None, debug = None, i2c_driver = None):
-		"""
+		"""!
 		This method initializes the class object. If no 'address' or
 		'i2c_driver' are inputed or 'None' is specified, the method will
 		use the defaults.
-		:param address: 	The I2C address to use for the device.
+
+		@param address: The I2C address to use for the device.
 							If not provided, the method will default to
 							the first address in the
 							'available_addresses' list.
 								Default = 0x29
-		:param debug:		Designated whether or not to print debug
+		@param debug: Designated whether or not to print debug
 							statements.
 							0-	Don't print debug statements
 							1-	Print debug statements
-		:param i2c_driver:	An existing i2c driver object. If not
+		@param i2c_driver: An existing i2c driver object. If not
 							provided a driver object is created from the
 							'qwiic_i2c' I2C driver of the SparkFun Qwiic
 							library.
@@ -141,30 +142,31 @@ class QwiicTCA9548A(object):
 
     #--------------------------------------------------------------------------
 	def is_connected(self):
-		"""
+		"""!
 			Determine if the device is conntected to the system.
-			:return: True if the device is connected, otherwise False.
-			:rtype: bool
-		"""
+
+			@return **bool** True if the device is connected, otherwise False.
+			"""
 		return qwiic_i2c.isDeviceConnected(self.address)
 
 	connected = property(is_connected)
 
 	def get_enabled_channels(self):
-		"""
+		"""!
 		This method returns the enabled channels on the Qwiic Mux.
-		:return:	Enabled channels on the Qwiic Mux
-		:rtype:		Integer
+
+		@return **Integer** Enabled channels on the Qwiic Mux
 		"""
 
 		# Return enabled channels
 		return self._i2c.readByte(self.address, None) # Note, passing "None" will simply read from device rather than targetting a specific register
 
 	def enable_channels(self, enable):
-		"""
+		"""!
 		This method enables the connection of specific channels on the
 		Qwiic Mux.
-		:param enable:		Channel(s) to enable on the Qwiic Mux. Input
+
+		@param enable: Channel(s) to enable on the Qwiic Mux. Input
 							must be either an individual integer or
 							list. The method will automatically convert
 							an individual integer into a list.
@@ -187,10 +189,11 @@ class QwiicTCA9548A(object):
 		self._i2c.writeCommand(self.address, command)
 
 	def disable_channels(self, disable):
-		"""
+		"""!
 		This method disables the connection of specific channels on the
 		Qwiic Mux.
-		:param enable:		Channel(s) to disable on the Qwiic Mux.
+
+		@param enable: Channel(s) to disable on the Qwiic Mux.
 							Input must be either an individual integer
 							or list. The method will automatically
 							convert an individual integer into a list.
@@ -214,7 +217,7 @@ class QwiicTCA9548A(object):
 		self._i2c.writeCommand(self.address, command)
 
 	def enable_all(self):
-		"""
+		"""!
 		This method enables the connection of specific channels on the
 		Qwiic Mux.
 		"""
@@ -223,7 +226,7 @@ class QwiicTCA9548A(object):
 		self._i2c.writeCommand(self.address, 0xFF)
 
 	def disable_all(self):
-		"""
+		"""!
 		This method disables the connection of all channels on the
 		Qwiic Mux.
 		"""
@@ -232,7 +235,7 @@ class QwiicTCA9548A(object):
 		self._i2c.writeCommand(self.address, 0x00)
 
 	def list_channels(self):
-		"""
+		"""!
 		This method lists all the available channels and their current
 		configuration (enabled or disabled) on the Qwiic Mux.
 		"""
