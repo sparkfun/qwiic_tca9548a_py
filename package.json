@@ -1,9 +1,9 @@
 {
     "urls": [
-      ["qwiic_tca9548a.py", "github:sparkfun/Qwiic_TCA9548A_Py/qwiic_tca9548a.py"]
-    ],
-    "deps": [
-      ["github:sparkfun/Qwiic_I2C_Py", "master"]
+      ["qwiic_tca9548a_py_examples/qwiic_tca9548a_ex1.py", "github:sparkfun/qwiic_tca9548a_py/examples/qwiic_tca9548a_ex1.py"],
+      ["qwiic_tca9548a_py_examples/qwiic_tca9548a_ex2.py", "github:sparkfun/qwiic_tca9548a_py/examples/qwiic_tca9548a_ex2.py"],
+      ["qwiic_tca9548a_py_examples/simple_disable_channels.py", "github:sparkfun/qwiic_tca9548a_py/examples/simple_disable_channels.py"],
+      ["qwiic_tca9548a_py_examples/simple_enable_channels.py", "github:sparkfun/qwiic_tca9548a_py/examples/simple_enable_channels.py"]
     ],
     "version": "0.9.0"
 }
