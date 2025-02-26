@@ -84,11 +84,12 @@ def runExample():
         myTca.enable_channels([i])
 
         # If a device is connected, initialize it
-        if distance_sensors[i].sensor_init() == None:
-            print("Sensor", i, " connected!")
-        else:
-            print("Sensor", i, " not connected! Exiting Program. Please connect sensor", i, "and restart program.")
-            sys.exit(0)
+        while True:
+            if distance_sensors[i].sensor_init() == None:
+                print("Sensor", i, " connected!")
+                break
+            else:
+                print("Sensor", i, " not connected! Retrying...")
 
     while True:
         # Loop through each sensor and enable its MUX channel then read the distance
